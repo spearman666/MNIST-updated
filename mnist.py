@@ -63,3 +63,14 @@ model.fit(X_train,Y_train, batch_size=batch_size, epochs = nb_epoch,
 
 score = model.evaluate(X_test,Y_test, verbose = 0)
 print('accuracy:{}%'.format(100-score))
+
+res = model.predict_classes(X_test[:9])
+plt.figure(figsize=(10,10))
+
+#visualizing some images
+for i in range(9):
+    plt.subplot(3,3,i+1)
+    plt.imshow(X_test[i,0],cmap='gray')
+    plt.gca().get_xaxis().set_ticks([])
+    plt.gca().get_yaxis().set_ticks([])
+    plt.ylabel('prediction = %d' % res[i], fontsize = 18)
